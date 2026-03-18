@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Points Table</title>
+
+<style>
+
+body{
+    background:#2f3742;
+    font-family: Arial, Helvetica, sans-serif;
+    margin:0;
+    padding:40px;
+}
+
+.container{
+    width:80%;
+    margin:auto;
+}
+
+.title{
+    color:white;
+    font-size:28px;
+    margin-bottom:20px;
+    font-weight:bold;
+}
+
+.points-table{
+    width:100%;
+}
+
+.table-header,
+.table-row{
+    display:grid;
+    grid-template-columns:60px 1fr 80px 80px 80px 80px 80px;
+    align-items:center;
+    padding:15px;
+    margin-bottom:12px;
+    border-radius:12px;
+}
+
+.table-header{
+    background:#3e4652;
+    color:white;
+    font-weight:600;
+}
+
+.table-row{
+    background:#596270;
+    color:white;
+    transition:0.3s;
+}
+
+.table-row:hover{
+    background:#6f7a8a;
+}
+
+.team{
+    text-align:left;
+    padding-left:10px;
+    font-weight:500;
+}
+
+.cell{
+    text-align:center;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<div class="title">Tournament Points Table</div>
+
+<div class="points-table">
+
+<div class="table-header">
+<div class="cell">#</div>
+<div class="team">TEAM NAME</div>
+<div class="cell">MP</div>
+<div class="cell">W</div>
+<div class="cell">L</div>
+<div class="cell">D</div>
+<div class="cell">TP</div>
+</div>
+
+<div class="table-row">
+<div class="cell">1</div>
+<div class="team">THUNDER BOYS</div>
+<div class="cell">6</div>
+<div class="cell">4</div>
+<div class="cell">2</div>
+<div class="cell">0</div>
+<div class="cell">8</div>
+</div>
+
+<div class="table-row">
+<div class="cell">2</div>
+<div class="team">SMASH MASTERS</div>
+<div class="cell">6</div>
+<div class="cell">4</div>
+<div class="cell">2</div>
+<div class="cell">0</div>
+<div class="cell">8</div>
+</div>
+
+<div class="table-row">
+<div class="cell">3</div>
+<div class="team">SMART BOYS</div>
+<div class="cell">6</div>
+<div class="cell">1</div>
+<div class="cell">5</div>
+<div class="cell">0</div>
+<div class="cell">2</div>
+</div>
+
+</div>
+
+</div>
+
+</body>
+</html>
