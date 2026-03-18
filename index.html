@@ -9,111 +9,102 @@
 <style>
 
 *{
+margin:0;
+padding:0;
 box-sizing:border-box;
-font-family:Segoe UI;
+font-family:"Segoe UI",sans-serif;
 }
 
 body{
-background:linear-gradient(135deg,#0f2027,#2c5364);
-margin:0;
-padding:30px;
+background:linear-gradient(135deg,#141e30,#243b55);
+min-height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+padding:20px;
 color:white;
 }
 
 .container{
-max-width:1000px;
-margin:auto;
+width:100%;
+max-width:800px;
 }
 
 .title{
 text-align:center;
-font-size:32px;
-margin-bottom:20px;
-}
-
-.controls{
-display:flex;
-justify-content:center;
-margin-bottom:20px;
-}
-
-button{
-padding:10px 16px;
-border:none;
-background:#00c6ff;
-color:white;
-border-radius:6px;
-cursor:pointer;
+font-size:30px;
 font-weight:bold;
+margin-bottom:25px;
 }
 
-button:hover{
-background:#0072ff;
+.table-card{
+background:white;
+border-radius:12px;
+overflow:hidden;
+box-shadow:0 10px 30px rgba(0,0,0,0.3);
 }
 
 table{
 width:100%;
 border-collapse:collapse;
-background:white;
-color:black;
-border-radius:10px;
-overflow:hidden;
+color:#333;
+}
+
+thead{
+background:#0066ff;
+color:white;
 }
 
 th{
-background:#0072ff;
-color:white;
-padding:12px;
+padding:14px;
 }
 
 td{
-padding:10px;
+padding:12px;
 text-align:center;
+border-bottom:1px solid #eee;
 }
 
-tr:nth-child(even){
-background:#f2f6ff;
+td.team{
+text-align:left;
+font-weight:600;
 }
 
-tr:hover{
-background:#e4edff;
+tbody tr:nth-child(even){
+background:#f5f8ff;
 }
 
-input{
-width:60px;
-padding:5px;
-}
-
-.teamInput{
-width:150px;
-}
-
-.delete{
-background:red;
-color:white;
-padding:6px 10px;
-border:none;
-border-radius:5px;
-cursor:pointer;
+tbody tr:hover{
+background:#e8f0ff;
+transition:0.2s;
 }
 
 .rank{
 font-weight:bold;
-color:#0072ff;
+color:#0066ff;
 }
 
-@media(max-width:700px){
-
-input{
-width:45px;
+.top1{
+background:#fff7d6 !important;
 }
 
-.teamInput{
-width:100px;
+.top2{
+background:#f0f0f0 !important;
 }
+
+.top3{
+background:#ffe9d6 !important;
+}
+
+@media(max-width:600px){
 
 .title{
 font-size:24px;
+}
+
+th,td{
+padding:10px;
+font-size:14px;
 }
 
 }
@@ -127,11 +118,9 @@ font-size:24px;
 
 <div class="title">🏆 CBL Tournament Points Table</div>
 
-<div class="controls">
-<button onclick="addTeam()">➕ Add Team</button>
-</div>
+<div class="table-card">
 
-<table id="table">
+<table>
 
 <thead>
 <tr>
@@ -142,98 +131,48 @@ font-size:24px;
 <th>L</th>
 <th>D</th>
 <th>TP</th>
-<th>Delete</th>
 </tr>
 </thead>
 
-<tbody></tbody>
+<tbody>
+
+<tr class="top1">
+<td class="rank">1</td>
+<td class="team">Thunder Boys</td>
+<td>6</td>
+<td>4</td>
+<td>2</td>
+<td>0</td>
+<td><b>8</b></td>
+</tr>
+
+<tr class="top2">
+<td class="rank">2</td>
+<td class="team">Smash Masters</td>
+<td>6</td>
+<td>4</td>
+<td>2</td>
+<td>0</td>
+<td><b>8</b></td>
+</tr>
+
+<tr class="top3">
+<td class="rank">3</td>
+<td class="team">Smart Boys</td>
+<td>6</td>
+<td>1</td>
+<td>5</td>
+<td>0</td>
+<td><b>2</b></td>
+</tr>
+
+</tbody>
 
 </table>
 
 </div>
 
-<script>
-
-let teams = JSON.parse(localStorage.getItem("teams")) || [
-{team:"Thunder Boys",mp:6,w:4,l:2,d:0,tp:8},
-{team:"Smash Masters",mp:6,w:4,l:2,d:0,tp:8},
-{team:"Smart Boys",mp:6,w:1,l:5,d:0,tp:2}
-];
-
-function render(){
-
-teams.sort((a,b)=>b.tp-a.tp);
-
-let tbody=document.querySelector("tbody");
-tbody.innerHTML="";
-
-teams.forEach((t,i)=>{
-
-tbody.innerHTML+=`
-<tr>
-
-<td class="rank">${i+1}</td>
-
-<td>
-<input class="teamInput" value="${t.team}" 
-onchange="update(${i},'team',this.value)">
-</td>
-
-<td><input value="${t.mp}" onchange="update(${i},'mp',this.value)"></td>
-
-<td><input value="${t.w}" onchange="update(${i},'w',this.value)"></td>
-
-<td><input value="${t.l}" onchange="update(${i},'l',this.value)"></td>
-
-<td><input value="${t.d}" onchange="update(${i},'d',this.value)"></td>
-
-<td><input value="${t.tp}" onchange="update(${i},'tp',this.value)"></td>
-
-<td>
-<button class="delete" onclick="removeTeam(${i})">X</button>
-</td>
-
-</tr>
-`;
-
-});
-
-localStorage.setItem("teams",JSON.stringify(teams));
-
-}
-
-function update(index,key,value){
-
-teams[index][key]=value;
-render();
-
-}
-
-function addTeam(){
-
-teams.push({
-team:"New Team",
-mp:0,
-w:0,
-l:0,
-d:0,
-tp:0
-});
-
-render();
-
-}
-
-function removeTeam(index){
-
-teams.splice(index,1);
-render();
-
-}
-
-render();
-
-</script>
+</div>
 
 </body>
 </html>
