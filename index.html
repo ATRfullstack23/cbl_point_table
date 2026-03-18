@@ -4,63 +4,118 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Editable Points Table</title>
+<title>CBL Points Table</title>
 
 <style>
 
+*{
+box-sizing:border-box;
+font-family:Segoe UI;
+}
+
 body{
-font-family:Arial;
-background:linear-gradient(120deg,#1e3c72,#2a5298);
-padding:40px;
+background:linear-gradient(135deg,#0f2027,#2c5364);
+margin:0;
+padding:30px;
 color:white;
 }
 
 .container{
-max-width:900px;
+max-width:1000px;
 margin:auto;
-background:white;
-color:black;
-padding:20px;
-border-radius:10px;
 }
 
-h2{
+.title{
 text-align:center;
+font-size:32px;
 margin-bottom:20px;
+}
+
+.controls{
+display:flex;
+justify-content:center;
+margin-bottom:20px;
+}
+
+button{
+padding:10px 16px;
+border:none;
+background:#00c6ff;
+color:white;
+border-radius:6px;
+cursor:pointer;
+font-weight:bold;
+}
+
+button:hover{
+background:#0072ff;
 }
 
 table{
 width:100%;
 border-collapse:collapse;
-}
-
-th,td{
-padding:12px;
-border-bottom:1px solid #ddd;
-text-align:center;
+background:white;
+color:black;
+border-radius:10px;
+overflow:hidden;
 }
 
 th{
-background:#4facfe;
+background:#0072ff;
 color:white;
+padding:12px;
 }
 
-button{
-padding:6px 12px;
-border:none;
-background:#4facfe;
+td{
+padding:10px;
+text-align:center;
+}
+
+tr:nth-child(even){
+background:#f2f6ff;
+}
+
+tr:hover{
+background:#e4edff;
+}
+
+input{
+width:60px;
+padding:5px;
+}
+
+.teamInput{
+width:150px;
+}
+
+.delete{
+background:red;
 color:white;
+padding:6px 10px;
+border:none;
 border-radius:5px;
 cursor:pointer;
 }
 
-button:hover{
-background:#007bff;
+.rank{
+font-weight:bold;
+color:#0072ff;
 }
 
+@media(max-width:700px){
+
 input{
-width:70px;
-text-align:center;
+width:45px;
+}
+
+.teamInput{
+width:100px;
+}
+
+.title{
+font-size:24px;
+}
+
 }
 
 </style>
@@ -70,7 +125,11 @@ text-align:center;
 
 <div class="container">
 
-<h2>🏆 CBL Points Table</h2>
+<div class="title">🏆 CBL Tournament Points Table</div>
+
+<div class="controls">
+<button onclick="addTeam()">➕ Add Team</button>
+</div>
 
 <table id="table">
 
@@ -83,46 +142,11 @@ text-align:center;
 <th>L</th>
 <th>D</th>
 <th>TP</th>
-<th>Action</th>
+<th>Delete</th>
 </tr>
 </thead>
 
-<tbody>
-
-<tr>
-<td>1</td>
-<td>Thunder Boys</td>
-<td><input value="6"></td>
-<td><input value="4"></td>
-<td><input value="2"></td>
-<td><input value="0"></td>
-<td><input value="8"></td>
-<td><button onclick="save()">Save</button></td>
-</tr>
-
-<tr>
-<td>2</td>
-<td>Smash Masters</td>
-<td><input value="6"></td>
-<td><input value="4"></td>
-<td><input value="2"></td>
-<td><input value="0"></td>
-<td><input value="8"></td>
-<td><button onclick="save()">Save</button></td>
-</tr>
-
-<tr>
-<td>3</td>
-<td>Smart Boys</td>
-<td><input value="6"></td>
-<td><input value="1"></td>
-<td><input value="5"></td>
-<td><input value="0"></td>
-<td><input value="2"></td>
-<td><button onclick="save()">Save</button></td>
-</tr>
-
-</tbody>
+<tbody></tbody>
 
 </table>
 
@@ -130,11 +154,84 @@ text-align:center;
 
 <script>
 
-function save(){
+let teams = JSON.parse(localStorage.getItem("teams")) || [
+{team:"Thunder Boys",mp:6,w:4,l:2,d:0,tp:8},
+{team:"Smash Masters",mp:6,w:4,l:2,d:0,tp:8},
+{team:"Smart Boys",mp:6,w:1,l:5,d:0,tp:2}
+];
 
-alert("Table Updated!");
+function render(){
+
+teams.sort((a,b)=>b.tp-a.tp);
+
+let tbody=document.querySelector("tbody");
+tbody.innerHTML="";
+
+teams.forEach((t,i)=>{
+
+tbody.innerHTML+=`
+<tr>
+
+<td class="rank">${i+1}</td>
+
+<td>
+<input class="teamInput" value="${t.team}" 
+onchange="update(${i},'team',this.value)">
+</td>
+
+<td><input value="${t.mp}" onchange="update(${i},'mp',this.value)"></td>
+
+<td><input value="${t.w}" onchange="update(${i},'w',this.value)"></td>
+
+<td><input value="${t.l}" onchange="update(${i},'l',this.value)"></td>
+
+<td><input value="${t.d}" onchange="update(${i},'d',this.value)"></td>
+
+<td><input value="${t.tp}" onchange="update(${i},'tp',this.value)"></td>
+
+<td>
+<button class="delete" onclick="removeTeam(${i})">X</button>
+</td>
+
+</tr>
+`;
+
+});
+
+localStorage.setItem("teams",JSON.stringify(teams));
 
 }
+
+function update(index,key,value){
+
+teams[index][key]=value;
+render();
+
+}
+
+function addTeam(){
+
+teams.push({
+team:"New Team",
+mp:0,
+w:0,
+l:0,
+d:0,
+tp:0
+});
+
+render();
+
+}
+
+function removeTeam(index){
+
+teams.splice(index,1);
+render();
+
+}
+
+render();
 
 </script>
 
