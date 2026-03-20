@@ -45,7 +45,7 @@ letter-spacing:1px;
 backdrop-filter:blur(15px);
 background:rgba(255,255,255,0.07);
 border-radius:20px;
-overflow:hidden;
+overflow-x:auto; /* SCROLL ENABLE */
 box-shadow:0 10px 40px rgba(0,0,0,0.5);
 border:1px solid rgba(255,255,255,0.1);
 }
@@ -53,6 +53,7 @@ border:1px solid rgba(255,255,255,0.1);
 /* Table */
 table{
 width:100%;
+min-width:600px; /* IMPORTANT FOR MOBILE */
 border-collapse:collapse;
 }
 
@@ -87,7 +88,6 @@ width:60px;
 height:60px;
 border-radius:12px;
 overflow:hidden;
-position:relative;
 }
 
 .team-poster img{
@@ -96,6 +96,7 @@ height:100%;
 object-fit:cover;
 }
 
+/* Team name */
 .team-name{
 font-size:16px;
 font-weight:600;
@@ -133,21 +134,40 @@ background:rgba(255,255,255,0.08);
 transform:scale(1.01);
 }
 
-/* Responsive */
+/* MOBILE RESPONSIVE */
 @media(max-width:600px){
 
+body{
+padding:10px;
+align-items:flex-start;
+}
+
 .title{
-font-size:26px;
+font-size:22px;
+margin-bottom:15px;
+}
+
+th,td{
+font-size:12px;
+padding:8px;
+}
+
+.team{
+gap:10px;
 }
 
 .team-poster{
-width:45px;
-height:45px;
+width:40px;
+height:40px;
+border-radius:8px;
 }
 
-td,th{
-font-size:12px;
-padding:10px;
+.team-name{
+font-size:13px;
+}
+
+.rank{
+font-size:16px;
 }
 
 }
@@ -198,7 +218,8 @@ padding:10px;
 <td class="rank">🥈</td>
 <td class="team">
 <div class="team-poster">
-<img src="thunder_boys.jpeg" alt="Thunder Boys"></div>
+<img src="thunder_boys.jpeg" alt="Thunder Boys">
+</div>
 <div class="team-name">Thunder Boys</div>
 </td>
 <td>18</td>
@@ -212,7 +233,8 @@ padding:10px;
 <td class="rank">🥉</td>
 <td class="team">
 <div class="team-poster">
-<img src="smart_boys.jpeg" alt="Smart Boys"></div>
+<img src="smart_boys.jpeg" alt="Smart Boys">
+</div>
 <div class="team-name">Smart Boys</div>
 </td>
 <td>18</td>
