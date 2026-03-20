@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>CBL Tournament Points Table</title>
+<title>CBL Premium Points Table</title>
 
 <style>
 
@@ -28,25 +28,25 @@ color:white;
 /* Container */
 .container{
 width:100%;
-max-width:900px;
+max-width:1000px;
 }
 
 /* Title */
 .title{
 text-align:center;
-font-size:32px;
+font-size:36px;
 font-weight:700;
-margin-bottom:25px;
+margin-bottom:30px;
 letter-spacing:1px;
 }
 
-/* Glass Card */
+/* Card */
 .table-card{
-backdrop-filter:blur(12px);
-background:rgba(255,255,255,0.08);
-border-radius:16px;
+backdrop-filter:blur(15px);
+background:rgba(255,255,255,0.07);
+border-radius:20px;
 overflow:hidden;
-box-shadow:0 8px 25px rgba(0,0,0,0.4);
+box-shadow:0 10px 40px rgba(0,0,0,0.5);
 border:1px solid rgba(255,255,255,0.1);
 }
 
@@ -54,7 +54,6 @@ border:1px solid rgba(255,255,255,0.1);
 table{
 width:100%;
 border-collapse:collapse;
-color:white;
 }
 
 thead{
@@ -62,36 +61,69 @@ background:rgba(255,255,255,0.1);
 }
 
 th{
-padding:16px;
-font-size:14px;
+padding:18px;
+font-size:13px;
 text-transform:uppercase;
 letter-spacing:1px;
+opacity:0.8;
 }
 
 td{
-padding:14px;
+padding:16px;
 text-align:center;
 border-bottom:1px solid rgba(255,255,255,0.08);
 }
 
-/* Team Column */
+/* Team Poster */
 .team{
 display:flex;
 align-items:center;
-gap:12px;
+gap:15px;
 text-align:left;
+}
+
+.team-poster{
+width:60px;
+height:60px;
+border-radius:12px;
+overflow:hidden;
+position:relative;
+}
+
+.team-poster img{
+width:100%;
+height:100%;
+object-fit:cover;
+}
+
+.team-name{
+font-size:16px;
 font-weight:600;
 }
 
-.team img{
-width:40px;
-height:40px;
-border-radius:50%;
-object-fit:cover;
-border:2px solid white;
+/* Rank */
+.rank{
+font-size:20px;
+font-weight:bold;
 }
 
-/* Row Hover */
+/* Top Teams Glow */
+.top1{
+background:linear-gradient(90deg,#ffd70022,#ffffff05);
+box-shadow:inset 0 0 10px #ffd70055;
+}
+
+.top2{
+background:linear-gradient(90deg,#c0c0c022,#ffffff05);
+box-shadow:inset 0 0 10px #c0c0c055;
+}
+
+.top3{
+background:linear-gradient(90deg,#cd7f3222,#ffffff05);
+box-shadow:inset 0 0 10px #cd7f3255;
+}
+
+/* Hover */
 tbody tr{
 transition:0.3s;
 }
@@ -101,45 +133,21 @@ background:rgba(255,255,255,0.08);
 transform:scale(1.01);
 }
 
-/* Rank Styling */
-.rank{
-font-weight:bold;
-font-size:18px;
-}
-
-/* Top 3 Highlight */
-.top1{
-background:linear-gradient(90deg,#ffd70033,#ffffff10);
-}
-
-.top2{
-background:linear-gradient(90deg,#c0c0c033,#ffffff10);
-}
-
-.top3{
-background:linear-gradient(90deg,#cd7f3233,#ffffff10);
-}
-
-/* Medal */
-.medal{
-font-size:18px;
-}
-
 /* Responsive */
 @media(max-width:600px){
 
 .title{
-font-size:24px;
+font-size:26px;
 }
 
-th,td{
-font-size:13px;
+.team-poster{
+width:45px;
+height:45px;
+}
+
+td,th{
+font-size:12px;
 padding:10px;
-}
-
-.team img{
-width:30px;
-height:30px;
 }
 
 }
@@ -151,7 +159,7 @@ height:30px;
 
 <div class="container">
 
-<div class="title">🏆 CBL Tournament Points Table</div>
+<div class="title">🏆 CBL Premium Points Table</div>
 
 <div class="table-card">
 
@@ -172,40 +180,46 @@ height:30px;
 <tbody>
 
 <tr class="top1">
-<td class="rank"><span class="medal">🥇</span></td>
+<td class="rank">🥇</td>
 <td class="team">
-<img src="https://via.placeholder.com/40" alt="">
-Thunder Boys
+<div class="team-poster">
+<img src="https://images.unsplash.com/photo-1549924231-f129b911e442" alt="">
+</div>
+<div class="team-name">Smash Masters</div>
 </td>
-<td>12</td>
-<td>9</td>
-<td>3</td>
+<td>18</td>
+<td>13</td>
+<td>5</td>
 <td>0</td>
-<td><b>18</b></td>
+<td><b>26</b></td>
 </tr>
 
 <tr class="top2">
-<td class="rank"><span class="medal">🥈</span></td>
+<td class="rank">🥈</td>
 <td class="team">
-<img src="https://via.placeholder.com/40" alt="">
-Smash Masters
+<div class="team-poster">
+<img src="https://images.unsplash.com/photo-1517649763962-0c623066013b" alt="">
+</div>
+<div class="team-name">Thunder Boys</div>
 </td>
-<td>12</td>
-<td>8</td>
-<td>4</td>
+<td>18</td>
+<td>13</td>
+<td>5</td>
 <td>0</td>
-<td><b>16</b></td>
+<td><b>26</b></td>
 </tr>
 
 <tr class="top3">
-<td class="rank"><span class="medal">🥉</span></td>
+<td class="rank">🥉</td>
 <td class="team">
-<img src="https://via.placeholder.com/40" alt="">
-Smart Boys
+<div class="team-poster">
+<img src="https://images.unsplash.com/photo-1505842465776-3d90f6163100" alt="">
+</div>
+<div class="team-name">Smart Boys</div>
 </td>
-<td>12</td>
+<td>18</td>
 <td>1</td>
-<td>11</td>
+<td>17</td>
 <td>0</td>
 <td><b>2</b></td>
 </tr>
