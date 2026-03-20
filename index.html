@@ -1,34 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<!-- HTML Meta Tags -->
+
 <title>CBL Tournament Points Table</title>
-<meta name="description" content="Live CBL Tournament Leaderboard" />
-
-<!-- Google / Search Engine Tags -->
-<meta itemprop="name" content="CBL Tournament Points Table" />
-<meta itemprop="description" content="Live CBL Tournament Leaderboard" />
-<meta itemprop="image" content="https://atrfullstack23.github.io/cbl_point_table/preview.jpg" />
-
-<!-- Facebook Meta Tags -->
-<meta property="og:url" content="https://cblpointable.netlify.app/" />
-<meta property="og:type" content="website" />
-<meta property="og:title" content="CBL Tournament Points Table" />
-<meta property="og:description" content="Live CBL Tournament Leaderboard" />
-<meta property="og:image" content="https://atrfullstack23.github.io/cbl_point_table/preview.jpg" />
-
-<!-- Twitter Meta Tags -->
-<meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:title" content="CBL Tournament Points Table" />
-<meta name="twitter:description" content="Live CBL Tournament Leaderboard" />
-<meta name="twitter:image" content="https://atrfullstack23.github.io/cbl_point_table/preview.jpg" />
-
-<!-- Meta Tags Generated via https://heymeta.com -->
-</head>
 
 <style>
 
@@ -40,7 +16,7 @@ font-family:"Segoe UI",sans-serif;
 }
 
 body{
-background:linear-gradient(135deg,#141e30,#243b55);
+background:linear-gradient(135deg,#0f2027,#203a43,#2c5364);
 min-height:100vh;
 display:flex;
 justify-content:center;
@@ -49,77 +25,107 @@ padding:20px;
 color:white;
 }
 
+/* Container */
 .container{
 width:100%;
-max-width:800px;
+max-width:900px;
 }
 
+/* Title */
 .title{
 text-align:center;
-font-size:30px;
-font-weight:bold;
+font-size:32px;
+font-weight:700;
 margin-bottom:25px;
+letter-spacing:1px;
 }
 
+/* Glass Card */
 .table-card{
-background:white;
-border-radius:12px;
+backdrop-filter:blur(12px);
+background:rgba(255,255,255,0.08);
+border-radius:16px;
 overflow:hidden;
-box-shadow:0 10px 30px rgba(0,0,0,0.3);
+box-shadow:0 8px 25px rgba(0,0,0,0.4);
+border:1px solid rgba(255,255,255,0.1);
 }
 
+/* Table */
 table{
 width:100%;
 border-collapse:collapse;
-color:#333;
-}
-
-thead{
-background:#0066ff;
 color:white;
 }
 
+thead{
+background:rgba(255,255,255,0.1);
+}
+
 th{
-padding:14px;
+padding:16px;
+font-size:14px;
+text-transform:uppercase;
+letter-spacing:1px;
 }
 
 td{
-padding:12px;
+padding:14px;
 text-align:center;
-border-bottom:1px solid #eee;
+border-bottom:1px solid rgba(255,255,255,0.08);
 }
 
-td.team{
+/* Team Column */
+.team{
+display:flex;
+align-items:center;
+gap:12px;
 text-align:left;
 font-weight:600;
 }
 
-tbody tr:nth-child(even){
-background:#f5f8ff;
+.team img{
+width:40px;
+height:40px;
+border-radius:50%;
+object-fit:cover;
+border:2px solid white;
+}
+
+/* Row Hover */
+tbody tr{
+transition:0.3s;
 }
 
 tbody tr:hover{
-background:#e8f0ff;
-transition:0.2s;
+background:rgba(255,255,255,0.08);
+transform:scale(1.01);
 }
 
+/* Rank Styling */
 .rank{
 font-weight:bold;
-color:#0066ff;
+font-size:18px;
 }
 
+/* Top 3 Highlight */
 .top1{
-background:#fff7d6 !important;
+background:linear-gradient(90deg,#ffd70033,#ffffff10);
 }
 
 .top2{
-background:#f0f0f0 !important;
+background:linear-gradient(90deg,#c0c0c033,#ffffff10);
 }
 
 .top3{
-background:#ffe9d6 !important;
+background:linear-gradient(90deg,#cd7f3233,#ffffff10);
 }
 
+/* Medal */
+.medal{
+font-size:18px;
+}
+
+/* Responsive */
 @media(max-width:600px){
 
 .title{
@@ -127,8 +133,13 @@ font-size:24px;
 }
 
 th,td{
+font-size:13px;
 padding:10px;
-font-size:14px;
+}
+
+.team img{
+width:30px;
+height:30px;
 }
 
 }
@@ -161,8 +172,11 @@ font-size:14px;
 <tbody>
 
 <tr class="top1">
-<td class="rank">1</td>
-<td class="team">Thunder Boys</td>
+<td class="rank"><span class="medal">🥇</span></td>
+<td class="team">
+<img src="https://via.placeholder.com/40" alt="">
+Thunder Boys
+</td>
 <td>12</td>
 <td>9</td>
 <td>3</td>
@@ -171,8 +185,11 @@ font-size:14px;
 </tr>
 
 <tr class="top2">
-<td class="rank">2</td>
-<td class="team">Smash Masters</td>
+<td class="rank"><span class="medal">🥈</span></td>
+<td class="team">
+<img src="https://via.placeholder.com/40" alt="">
+Smash Masters
+</td>
 <td>12</td>
 <td>8</td>
 <td>4</td>
@@ -181,8 +198,11 @@ font-size:14px;
 </tr>
 
 <tr class="top3">
-<td class="rank">3</td>
-<td class="team">Smart Boys</td>
+<td class="rank"><span class="medal">🥉</span></td>
+<td class="team">
+<img src="https://via.placeholder.com/40" alt="">
+Smart Boys
+</td>
 <td>12</td>
 <td>1</td>
 <td>11</td>
