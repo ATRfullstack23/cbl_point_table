@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>CBL Premium Points Table</title>
+<title>CBL Points Table</title>
 
 <style>
 
@@ -21,73 +21,68 @@ min-height:100vh;
 display:flex;
 justify-content:center;
 align-items:center;
-padding:20px;
+padding:10px;
 color:white;
 }
 
 /* Container */
 .container{
 width:100%;
-max-width:1000px;
+max-width:100%;
 }
 
 /* Title */
 .title{
 text-align:center;
-font-size:36px;
+font-size:24px;
 font-weight:700;
-margin-bottom:30px;
-letter-spacing:1px;
+margin-bottom:15px;
 }
 
 /* Card */
 .table-card{
-backdrop-filter:blur(15px);
-background:rgba(255,255,255,0.07);
-border-radius:20px;
-overflow-x:auto; /* SCROLL ENABLE */
-box-shadow:0 10px 40px rgba(0,0,0,0.5);
-border:1px solid rgba(255,255,255,0.1);
+background:rgba(255,255,255,0.08);
+border-radius:14px;
+overflow:hidden;
 }
 
 /* Table */
 table{
 width:100%;
-min-width:600px; /* IMPORTANT FOR MOBILE */
 border-collapse:collapse;
+table-layout:fixed; /* IMPORTANT */
 }
 
-thead{
-background:rgba(255,255,255,0.1);
-}
-
+/* Header */
 th{
-padding:18px;
-font-size:13px;
+font-size:11px;
+padding:8px 4px;
 text-transform:uppercase;
-letter-spacing:1px;
-opacity:0.8;
 }
 
+/* Data */
 td{
-padding:16px;
+font-size:11px;
+padding:8px 4px;
 text-align:center;
 border-bottom:1px solid rgba(255,255,255,0.08);
 }
 
-/* Team Poster */
+/* Team column */
 .team{
 display:flex;
 align-items:center;
-gap:15px;
+gap:6px;
 text-align:left;
 }
 
+/* Poster */
 .team-poster{
-width:60px;
-height:60px;
-border-radius:12px;
+width:28px;
+height:28px;
+border-radius:6px;
 overflow:hidden;
+flex-shrink:0;
 }
 
 .team-poster img{
@@ -96,81 +91,23 @@ height:100%;
 object-fit:cover;
 }
 
-/* Team name */
+/* Name */
 .team-name{
-font-size:16px;
-font-weight:600;
+font-size:11px;
+white-space:nowrap;
+overflow:hidden;
+text-overflow:ellipsis;
 }
 
 /* Rank */
 .rank{
-font-size:20px;
-font-weight:bold;
+font-size:14px;
 }
 
-/* Top Teams Glow */
-.top1{
-background:linear-gradient(90deg,#ffd70022,#ffffff05);
-box-shadow:inset 0 0 10px #ffd70055;
-}
-
-.top2{
-background:linear-gradient(90deg,#c0c0c022,#ffffff05);
-box-shadow:inset 0 0 10px #c0c0c055;
-}
-
-.top3{
-background:linear-gradient(90deg,#cd7f3222,#ffffff05);
-box-shadow:inset 0 0 10px #cd7f3255;
-}
-
-/* Hover */
-tbody tr{
-transition:0.3s;
-}
-
-tbody tr:hover{
-background:rgba(255,255,255,0.08);
-transform:scale(1.01);
-}
-
-/* MOBILE RESPONSIVE */
-@media(max-width:600px){
-
-body{
-padding:10px;
-align-items:flex-start;
-}
-
-.title{
-font-size:22px;
-margin-bottom:15px;
-}
-
-th,td{
-font-size:12px;
-padding:8px;
-}
-
-.team{
-gap:10px;
-}
-
-.team-poster{
-width:40px;
-height:40px;
-border-radius:8px;
-}
-
-.team-name{
-font-size:13px;
-}
-
-.rank{
-font-size:16px;
-}
-
-}
+/* Highlight */
+.top1{background:rgba(255,215,0,0.15);}
+.top2{background:rgba(192,192,192,0.15);}
+.top3{background:rgba(205,127,50,0.15);}
 
 </style>
 </head>
@@ -179,7 +116,7 @@ font-size:16px;
 
 <div class="container">
 
-<div class="title">🏆 CBL Premium Points Table</div>
+<div class="title">🏆 CBL Points Table</div>
 
 <div class="table-card">
 
@@ -203,7 +140,7 @@ font-size:16px;
 <td class="rank">🥇</td>
 <td class="team">
 <div class="team-poster">
-<img src="smash_masters.jpeg" alt="Smash Masters">
+<img src="smash_masters.jpeg">
 </div>
 <div class="team-name">Smash Masters</div>
 </td>
@@ -218,7 +155,7 @@ font-size:16px;
 <td class="rank">🥈</td>
 <td class="team">
 <div class="team-poster">
-<img src="thunder_boys.jpeg" alt="Thunder Boys">
+<img src="thunder_boys.jpeg">
 </div>
 <div class="team-name">Thunder Boys</div>
 </td>
@@ -233,7 +170,7 @@ font-size:16px;
 <td class="rank">🥉</td>
 <td class="team">
 <div class="team-poster">
-<img src="smart_boys.jpeg" alt="Smart Boys">
+<img src="smart_boys.jpeg">
 </div>
 <div class="team-name">Smart Boys</div>
 </td>
