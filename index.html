@@ -28,7 +28,6 @@ color:white;
 /* Container */
 .container{
 width:100%;
-max-width:100%;
 }
 
 /* Title */
@@ -50,7 +49,7 @@ overflow:hidden;
 table{
 width:100%;
 border-collapse:collapse;
-table-layout:fixed; /* IMPORTANT */
+table-layout:fixed;
 }
 
 /* Header */
@@ -63,26 +62,25 @@ text-transform:uppercase;
 /* Data */
 td{
 font-size:11px;
-padding:8px 4px;
+padding:10px 4px;
 text-align:center;
 border-bottom:1px solid rgba(255,255,255,0.08);
 }
 
-/* Team column */
+/* Team column - vertical */
 .team{
 display:flex;
+flex-direction:column;
 align-items:center;
-gap:6px;
-text-align:left;
+gap:5px;
 }
 
 /* Poster */
 .team-poster{
-width:28px;
-height:28px;
-border-radius:6px;
+width:35px;
+height:35px;
+border-radius:8px;
 overflow:hidden;
-flex-shrink:0;
 }
 
 .team-poster img{
@@ -94,9 +92,8 @@ object-fit:cover;
 /* Name */
 .team-name{
 font-size:11px;
-white-space:nowrap;
-overflow:hidden;
-text-overflow:ellipsis;
+text-align:center;
+line-height:1.2;
 }
 
 /* Rank */
@@ -129,7 +126,6 @@ font-size:14px;
 <th>MP</th>
 <th>W</th>
 <th>L</th>
-<th>D</th>
 <th>TP</th>
 </tr>
 </thead>
@@ -138,46 +134,49 @@ font-size:14px;
 
 <tr class="top1">
 <td class="rank">🥇</td>
-<td class="team">
+<td>
+<div class="team">
 <div class="team-poster">
 <img src="smash_masters.jpeg">
 </div>
 <div class="team-name">Smash Masters</div>
+</div>
 </td>
 <td>18</td>
 <td>13</td>
 <td>5</td>
-<td>0</td>
 <td><b>26</b></td>
 </tr>
 
 <tr class="top2">
 <td class="rank">🥈</td>
-<td class="team">
+<td>
+<div class="team">
 <div class="team-poster">
 <img src="thunder_boys.jpeg">
 </div>
 <div class="team-name">Thunder Boys</div>
+</div>
 </td>
 <td>18</td>
 <td>13</td>
 <td>5</td>
-<td>0</td>
 <td><b>26</b></td>
 </tr>
 
 <tr class="top3">
 <td class="rank">🥉</td>
-<td class="team">
+<td>
+<div class="team">
 <div class="team-poster">
 <img src="smart_boys.jpeg">
 </div>
 <div class="team-name">Smart Boys</div>
+</div>
 </td>
 <td>18</td>
 <td>1</td>
 <td>17</td>
-<td>0</td>
 <td><b>2</b></td>
 </tr>
 
